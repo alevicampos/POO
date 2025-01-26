@@ -47,5 +47,25 @@ public class Main {
         paciente1.imprimirInfo();
         Paciente paciente2 = new Paciente();
         paciente2.imprimirInfo();
+
+        // Clase libro
+        Libro libro1 = new Libro("El Alquimista", "Paolo Coello");
+        Libro libro2 = new Libro("El último Catón", "Matilde Asensi");
+
+        System.out.println(libro1);
+        System.out.println(libro2);
+
+        System.out.println("Libros totales: " + Libro.getTotalLibros());
+        System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
+
+        libro1.prestar();
+        System.out.println("Después de prestar el libro 1:");
+        System.out.println(libro1);
+        System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
+
+        libro1.devolver();
+        System.out.println("Después de devolver el libro 1:");
+        System.out.println(libro1);
+        System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
     }
 }

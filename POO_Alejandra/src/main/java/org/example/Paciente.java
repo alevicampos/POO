@@ -40,6 +40,7 @@ public class Paciente {
 
         Random aleatorio = new Random();
         int numeroDni = aleatorio.nextInt(10000000,99999999);
+
         int resto = numeroDni%23;
         char letras[] = {'T', 'R', 'W', 'A', 'G', 'M', 'Y',
                 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z',
