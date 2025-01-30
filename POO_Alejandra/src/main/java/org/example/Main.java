@@ -1,71 +1,53 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //creación de los objetos Persona
-        Persona persona1 = new Persona("Juan", "48349599b", 30, "Alicante", "Profesor");
-        Persona persona2 = new Persona("Ana", "48315566g", 25, "Barcelona", "Desarrollador");
 
-        //mostrando la información de las dos personas mediante el método mostrarInformacion()
-        persona1.mostrarInformacion();
-        System.out.println();
-        persona2.mostrarInformacion();
+        Estudiante estudiante1 = new Estudiante("Paco");
+        Estudiante estudiante2 = new Estudiante("Paco", "2ºESO", "noseque@edu.gva.es");
 
-        // ejemplo de uso de lo getters y setters
+        System.out.println(estudiante1);
+        System.out.println(estudiante2);
 
-        persona1.setNombre("Pepe");
-        System.out.println("nuevo nombre de persona1: " + persona1.getNombre());
+        if (Estudiante.validarEmail(estudiante2.getEmail())) {
+            System.out.println("El email es correcto");
+        } else {
+            System.out.println("El email no cumple con el formato");
+        }
 
-        // Crear instancias de Televisor
-        Televisor tv1 = new Televisor(); // Canal: 1, Volumen: 5
-        Televisor tv2 = new Televisor(10, 20); // Canal: 10, Volumen: 20
+        Editorial editorial1 = new Editorial("ANAYA", "ESPAÑA");
+        System.out.println(editorial1);
 
-        // Comprobar el estado inicial de cada televisor
-        System.out.println("Estado inicial de TV1 - Canal: " + tv1.getCanal() + ", Volumen: " + tv1.getVolumen());
-        System.out.println("Estado inicial de TV2 - Canal: " + tv2.getCanal() + ", Volumen: " + tv2.getVolumen());
-
-        // Cambiar el canal y el volumen en tv1
-        tv1.subirCanal();
-        tv1.subirVolumen();
-        tv1.bajarVolumen();
-        tv1.setCanal(99);
-        tv1.subirCanal(); // Intentar pasar del canal 99
-
-        // Cambiar el canal y el volumen en tv2
-        tv2.bajarCanal();
-        tv2.bajarVolumen();
-        tv2.setVolumen(101); // Volumen inválido
-        tv2.setCanal(-5); // Canal inválido
-
-        // Mostrar el estado final de cada televisor
-        System.out.println("Estado final de TV1 - Canal: " + tv1.getCanal() + ", Volumen: " + tv1.getVolumen());
-        System.out.println("Estado final de TV2 - Canal: " + tv2.getCanal() + ", Volumen: " + tv2.getVolumen());
-
-        Paciente paciente1 = new Paciente("Luis",45,'H',90,1.90);
-        paciente1.imprimirInfo();
-        Paciente paciente2 = new Paciente();
-        paciente2.imprimirInfo();
-
-        // Clase libro
-        Libro libro1 = new Libro("El Alquimista", "Paolo Coello");
-        Libro libro2 = new Libro("El último Catón", "Matilde Asensi");
-
+        Libro libro1 = new Libro("El Principito", "Quevedo", editorial1);
         System.out.println(libro1);
+
+        Libro libro2 = new Libro("Tiburón", "Torres", editorial1);
         System.out.println(libro2);
 
-        System.out.println("Libros totales: " + Libro.getTotalLibros());
         System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
 
-        libro1.prestar();
-        System.out.println("Después de prestar el libro 1:");
+        Prestamo prestamo1 = libro1.prestar(estudiante2);
+        if (prestamo1 != null) {
+            System.out.println("Préstamo realizado: " + prestamo1);
+        }
+
+        System.out.println(estudiante2);
         System.out.println(libro1);
         System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
 
-        libro1.devolver();
-        System.out.println("Después de devolver el libro 1:");
+        libro1.devolver(estudiante2);
         System.out.println(libro1);
+        System.out.println(estudiante2);
         System.out.println("Libros disponibles: " + Libro.getLibrosDisponibles());
+
+        // Intentar devolver nuevamente para probar la validación
+        libro1.devolver(estudiante2);
+
+        libro1.estaDisponible();
+
+        Persona persona1 = new Persona("Marta", "48349599J", 28, "Alicante", "Fontanero" );
+
     }
 }
