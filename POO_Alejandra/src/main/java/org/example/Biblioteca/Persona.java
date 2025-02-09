@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Biblioteca;
 public class Persona {
     private String nombre;
     private String dni;

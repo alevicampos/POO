@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Biblioteca;
 import java.time.LocalDate;
 public class Prestamo {
     private Estudiante estudiante;
