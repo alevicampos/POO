@@ -1,0 +1,76 @@
+@startuml
+class Editorial {
+    - String nombre
+    - String pais
+}
+
+class Estudiante {
+    + static int contadorEstudiantes
+    - static final String CORREO_FORMAT
+    - String nombre
+    - String curso
+    - int nia
+    - String email
+    + Estudiante(String nombre, String curso, String email)
+    + Estudiante(String nombre)
+    + static int obtenerTotalEstudiantes()
+    + static boolean validarEmail(String email)
+    + String getNombre()
+    + void setNombre(String nombre)
+    + String getCurso()
+    + void setCurso(String curso)
+    + int getNia()
+    + void setNia(int nia)
+    + void setEmail(String email)
+    + String toString()
+}
+
+class Libro {
+    - static int cantidadLibros
+    - static int librosDisponibles
+    + static final String ID_LIBROS
+    - String titulo
+    - String autor
+    - String idLibro
+    - boolean estaDisponible
+    - Estudiante estudiantePrestado
+    - Libro libroPrestado
+    - Editorial editorial
+    + Libro(String titulo, String autor)
+    - String calcularId()
+    + void devolver(boolean estaDisponible)
+    + void setEstaDisponible(boolean estaDisponible)
+    + String getIdLibro()
+    + String getAutor()
+    + void setAutor(String autor)
+    + String getTitulo()
+    + void setTitulo(String titulo)
+    + boolean getEstaDisponible()
+    + Libro getLibroPrestado()
+    + void setLibroPrestado(Libro libroPrestado)
+    + void estaDisponible()
+    + static int getTotalLibros()
+    + static int getLibrosDisponibles()
+    + String toString()
+}
+
+class Prestamo {
+    - Estudiante estudiante
+    - Libro libro
+    - LocalDate fecha
+    + Prestamo(Estudiante estudiante, Libro libro)
+    + Estudiante getEstudiante()
+    + void setEstudiante(Estudiante estudiante)
+    + Libro getLibro()
+    + void setLibro(Libro libro)
+    + LocalDate getFecha()
+    + String toString()
+}
+
+
+Libro "1" o-- "1" Editorial : tiene
+Libro "1" o-- "0..1" Estudiante : prestado a
+Estudiante "1" o-- "0..1" Libro : tiene prestado
+Prestamo "1" o-- "1" Estudiante : tiene
+Prestamo "1" o-- "1" Libro : contiene
+@enduml

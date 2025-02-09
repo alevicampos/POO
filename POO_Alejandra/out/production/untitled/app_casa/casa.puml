@@ -1,0 +1,61 @@
+@startuml
+
+class Casa {
+    - String direccion
+    - ArrayList<Habitacion> habitaciones
+    - Propietario propietario
+    + Casa(String direccion)
+    + void setPropietario()
+    + void agregarHabitacion(String nombre, int metrosCuadrados)
+    + boolean existeHabitacion(String nombre)
+    + void borrarHabitacion(String nombre)
+    + void mostrarHabitaciones()
+    + Habitacion getHabitacionMasGrande()
+    + void calcularHabitacionMasConsumo()
+    + Propietario getPropietario()
+    + ArrayList<Habitacion> getHabitaciones()
+    + void setHabitaciones(ArrayList<Habitacion> habitaciones)
+}
+
+class Propietario {
+    - String nombre
+    - int edad
+    + Propietario(String nombre, int edad)
+    + String getNombre()
+    + void setNombre(String nombre)
+    + int getEdad()
+    + void setEdad(int edad)
+}
+
+class Habitacion {
+    - String nombre
+    - int metrosCuadrados
+    - ArrayList<Electrodomestico> listaElectrodomesticos
+    + Habitacion(String nombre, int metrosCuadrados)
+    + String getNombre()
+    + int getMetrosCuadrados()
+    + void setMetrosCuadrados(int metrosCuadrados)
+    + ArrayList<Electrodomestico> getListaElectrodomesticos()
+    + void setListaElectrodomesticos(ArrayList<Electrodomestico> listaElectrodomesticos)
+    + void agregarElectrodomestico(String nombre, double consumo)
+    + boolean existeElectrodomestico(String nombre)
+    + void mostrarElectrodomesticos()
+    + double calcularConsumoHabitacion()
+}
+
+class Electrodomestico {
+    - String nombre
+    - double consumo
+    + Electrodomestico(String nombre, double consumo)
+    + double getConsumo()
+    + void setConsumo(double consumo)
+    + String getNombre()
+    + void setNombre(String nombre)
+}
+
+
+Casa "1" -- "1" Propietario : tiene
+Casa "1" -- "*" Habitacion : contiene
+Habitacion "1" -- "*" Electrodomestico : tiene
+
+@enduml
